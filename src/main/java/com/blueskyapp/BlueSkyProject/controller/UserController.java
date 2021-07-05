@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class UserController {  
     @Autowired
     UserService userService;
 
@@ -30,6 +30,7 @@ public class UserController {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/")
     public void add(@RequestBody User user) {
         userService.saveUser(user);

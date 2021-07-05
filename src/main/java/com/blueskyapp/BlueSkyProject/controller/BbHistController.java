@@ -31,6 +31,7 @@ public class BbHistController {
             return new ResponseEntity<BbHist>(HttpStatus.NOT_FOUND);
         }
     }
+
     @PostMapping("/")
     public void add(@RequestBody BbHist bbHist) {
         bbHistService.saveBbHist(bbHist);

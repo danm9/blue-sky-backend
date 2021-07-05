@@ -11,17 +11,19 @@ public class User {
 	private String lastName;
 	private String password;
 	private int accountNumber;
+	private String accountType;
 	
     public User() {
     }
     
-	public User(int id, String email, String firstName, String lastName, String password, int accountNumber) {
+	public User(int id, String email, String firstName, String lastName, String password, int accountNumber, String accountType) {
 		this.id = id;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 		this.accountNumber = accountNumber;
+		this.accountType = accountType;
 	}
 
     @Id
@@ -72,6 +74,14 @@ public class User {
 
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+	
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 	
 }
