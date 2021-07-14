@@ -15,10 +15,10 @@ import java.util.NoSuchElementException;
 public class UserController {  
     @Autowired
     UserService userService;
-
+ 
     @GetMapping("")
     public List<User> list() {
-        return userService.listAllUser();
+        return userService.listAllUser(); 
     }
 
     @GetMapping("/{id}")
