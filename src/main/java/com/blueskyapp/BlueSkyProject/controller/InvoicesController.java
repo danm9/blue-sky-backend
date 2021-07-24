@@ -20,7 +20,8 @@ public class InvoicesController {
     public List<Invoices> list() {
         return invoicesService.listAllInvoices();
     }
-
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("/{invoicesId}")
     public ResponseEntity<Invoices> get(@PathVariable Integer invoiceId) {
         try {
@@ -30,7 +31,8 @@ public class InvoicesController {
             return new ResponseEntity<Invoices>(HttpStatus.NOT_FOUND);
         }
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @PostMapping("/")
     public void add(@RequestBody Invoices invoices) {
     	invoicesService.saveInvoices(invoices);

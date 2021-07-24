@@ -16,12 +16,14 @@ import com.blueskyapp.BlueSkyProject.service.BbHistService;
 public class BbHistController {
     @Autowired
     BbHistService bbHistService;
-
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("")
     public List<BbHist> list() {
         return bbHistService.listAllBbHist();
     }
 
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("/{blueBucksId}")
     public ResponseEntity<BbHist> get(@PathVariable Integer blueBucksId) {
         try {
@@ -31,7 +33,8 @@ public class BbHistController {
             return new ResponseEntity<BbHist>(HttpStatus.NOT_FOUND);
         }
     }
-
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @PostMapping("/")
     public void add(@RequestBody BbHist bbHist) {
         bbHistService.saveBbHist(bbHist);

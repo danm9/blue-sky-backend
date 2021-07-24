@@ -16,11 +16,13 @@ public class ServiceCategoriesController {
     @Autowired
     ServiceCategoriesService serviceCategoriesService;
 
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("")
     public List<ServiceCategories> list() {
         return serviceCategoriesService.listAllServiceCategories();
     }
-
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("/{serviceId}")
     public ResponseEntity<ServiceCategories> get(@PathVariable Integer serviceId) {
         try {
@@ -30,7 +32,7 @@ public class ServiceCategoriesController {
             return new ResponseEntity<ServiceCategories>(HttpStatus.NOT_FOUND);
         }
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @PostMapping("/")
     public void add(@RequestBody ServiceCategories serviceCategories) {
     	serviceCategoriesService.saveServiceCategories(serviceCategories);

@@ -15,12 +15,14 @@ import java.util.NoSuchElementException;
 public class ServiceHistoryController {
 	@Autowired
 	ServiceHistoryService serviceHistoryService;
-	
+
+	@CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
 	@GetMapping("")
     public List<ServiceHistory> list() {
         return serviceHistoryService.listAllServiceHistory();
     }
 	
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("/{id}")
     public ResponseEntity<ServiceHistory> get(@PathVariable Integer historyId) {
         try {
@@ -30,7 +32,7 @@ public class ServiceHistoryController {
             return new ResponseEntity<ServiceHistory>(HttpStatus.NOT_FOUND);
         }
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @PostMapping("/")
     public void add(@RequestBody ServiceHistory serviceHistory) {
     	serviceHistoryService.saveServiceHistory(serviceHistory);
