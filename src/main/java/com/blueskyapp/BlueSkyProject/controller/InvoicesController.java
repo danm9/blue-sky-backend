@@ -15,7 +15,8 @@ import java.util.NoSuchElementException;
 public class InvoicesController {
     @Autowired
     InvoicesService invoicesService;
-
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("")
     public List<Invoices> list() {
         return invoicesService.listAllInvoices();
@@ -37,6 +38,7 @@ public class InvoicesController {
     public void add(@RequestBody Invoices invoices) {
     	invoicesService.saveInvoices(invoices);
     }
+    
     @PutMapping("/{invoiceId}")
     public ResponseEntity<?> update(@RequestBody Invoices invoices, @PathVariable Integer invoiceId) {
         try {
@@ -48,6 +50,7 @@ public class InvoicesController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
     @DeleteMapping("/{invoiceId}")
     public void delete(@PathVariable Integer invoiceId) {
 
