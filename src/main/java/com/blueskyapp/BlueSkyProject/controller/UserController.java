@@ -15,12 +15,14 @@ import java.util.NoSuchElementException;
 public class UserController {  
     @Autowired
     UserService userService;
- 
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("")
     public List<User> list() {
         return userService.listAllUser(); 
     }
-
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @GetMapping("/{id}")
     public ResponseEntity<User> get(@PathVariable Integer id) {
         try {
@@ -30,7 +32,8 @@ public class UserController {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    
+    @CrossOrigin(origins = "https://blueskyappv1.herokuapp.com/")
     @PostMapping("/")
     public void add(@RequestBody User user) {
         userService.saveUser(user);
